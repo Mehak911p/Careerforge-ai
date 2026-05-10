@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CareerForge AI</title>
+
+<style>
+body{
+background:#0f172a;
+font-family:Arial;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.box{
+width:90%;
+max-width:500px;
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+}
+
+h1{
+text-align:center;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:15px;
+}
+
+.buttons button{
+flex:1;
+padding:10px;
+background:#2563eb;
+border:none;
+color:white;
+border-radius:8px;
+}
+
+.chat{
+height:250px;
+overflow-y:auto;
+background:#0f172a;
+padding:10px;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+input{
+width:75%;
+padding:12px;
+border:none;
+border-radius:8px;
+}
+
+.send{
+padding:12px;
+background:#22c55e;
+border:none;
+color:white;
+border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🚀 CareerForge AI</h1>
+
+<div class="buttons">
+<button>CV Help</button>
+<button>Interview</button>
+<button>Cover Letter</button>
+<button>Sponsorship</button>
+</div>
+
+<div class="chat" id="chat"></div>
+
+<input id="msg" placeholder="Ask about jobs, CVs or interviews...">
+<button class="send" onclick="send()">Send</button>
+
+</div>
+
+<script>
+async function send(){
+
+let msg = document.getElementById("msg").value;
+
+document.getElementById("chat").innerHTML +=
+"<p><b>You:</b> "+msg+"</p>";
+
+let res = await fetch("/chat",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({message:msg})
+});
+
+let data = await res.json();
+
+document.getElementById("chat").innerHTML +=
+"<p><b>CareerForge AI:</b> "+data.reply+"</p>";
+}
+</script>
+
+</body>
+</html>
