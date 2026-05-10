@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 client = OpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 @app.route("/")
@@ -14,31 +14,28 @@ def home():
 
 @app.route("/chat", methods=["POST"])
 def chat():
-    user_msg = request.json.get("message")
 
-    try:
-        response = client.responses.create(
-            model="gpt-4o-mini",
-            input=f"""
-            You are CareerForge AI.
-            Help users with:
-            - UK jobs
-            - CV improvement
-            - interview preparation
-            - sponsorship guidance
-            - cover letters
+    user_message = request.json.get("message")
 
-            User message:
-            {user_msg}
-            """
-        )
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are CareerForge AI, a smart career assistant helping people with jobs, CVs, interview tips and career advice."
+            },
+            {
+                "role": "user",
+                "content": user_message
+            }
+        ]
+    )
 
-        reply = response.output_text
+    reply = response.choices[0].message.content
 
-    except Exception as e:
-        reply = "Error: " + str(e)
-
-    return jsonify({"reply": reply})
+    return jsonify({
+        "reply": reply
+    })
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    app.run(debug=True)
