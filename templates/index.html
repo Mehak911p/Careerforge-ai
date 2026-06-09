@@ -83,7 +83,7 @@ async function send(){
 let msg=document.getElementById("msg").value;
 
 document.getElementById("chat").innerHTML +=
-"<p><b>AI:</b> "+data.reply.replace(/\n/g,"<br>")+"</p>";
+"<p><b>You:</b> "+msg+"</p>";
 
 let res=await fetch("/chat",{
 method:"POST",
@@ -94,7 +94,7 @@ body:JSON.stringify({message:msg})
 let data=await res.json();
 
 document.getElementById("chat").innerHTML +=
-"<p><b>AI:</b> "+data.reply+"</p>";
+"<p><b>AI:</b> "+data.reply.replace(/\n/g,"<br>")+"</p>";
 
 document.getElementById("msg").value="";
 }
