@@ -12,8 +12,9 @@ client = OpenAI(
 def home():
     return render_template("index.html")
 
-@app.route("/chat", methods=["POST"])
+@app.@app.route("/chat", methods=["POST"])
 def chat():
+    return jsonify({"reply": "Backend is working!"})
 
     user_message = request.json.get("message")
 
