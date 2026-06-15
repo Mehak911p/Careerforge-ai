@@ -92,7 +92,7 @@ body:JSON.stringify({message:msg})
 });
 
 let data=await res.json();
-document.getElementById("loading").remove();
+
 document.getElementById("chat").innerHTML +=
 "<p><b>AI:</b> "+data.reply.replace(/\n/g,"<br>")+"</p>";
 
