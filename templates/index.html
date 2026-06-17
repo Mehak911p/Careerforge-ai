@@ -90,10 +90,11 @@ method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({message:msg})
 });
-
+document.getElementById("chat").innerHTML +=
+"<p id='thinking'><b>AI:</b> Thinking...</p>";
 let data=await res.json();
 
-document.getElementById("chat").innerHTML +=
+document.getElementById("thinking").outerHTML =
 "<p><b>AI:</b> "+data.reply.replace(/\n/g,"<br>")+"</p>";
 
 document.getElementById("msg").value="";
