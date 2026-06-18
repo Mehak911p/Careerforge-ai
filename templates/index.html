@@ -107,8 +107,8 @@ document.getElementById("chat").innerHTML +=
 "<p id='thinking'><b>AI:</b> Thinking...</p>";
 let data=await res.json();
 
-document.getElementById("thinking").outerHTML =
-"<p><b>AI:</b> "+data.reply.replace(/\n/g,"<br>")+"</p>";
+document.getElementById("chat").innerHTML +=
+"<div class='ai-message'><b>AI:</b><br>"+data.reply.replace(/\n/g,"<br>")+"</div>";
 
 document.getElementById("msg").value="";
 }
