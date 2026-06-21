@@ -106,7 +106,10 @@ body:JSON.stringify({message:msg})
 document.getElementById("chat").innerHTML +=
 "<p id='thinking'><b>AI:</b> Thinking...</p>";
 let data=await res.json();
-
+let thinking = document.getElementById("thinking");
+if (thinking) {
+    thinking.remove();
+}
 document.getElementById("chat").innerHTML +=
 "<div class='ai-message'><b>AI:</b><br>"+data.reply.replace(/\n/g,"<br>")+"</div>";
 
