@@ -49,6 +49,9 @@ color:white;
 font-weight:bold;
 cursor:pointer;
 }
+ button:hover{
+background:#1d4ed8;
+ }
  .user-message{
 background:#2563eb;
 padding:10px;
@@ -128,6 +131,9 @@ document.getElementById("msg").addEventListener("keydown", function(event) {
         send();
     }
 });
+function clearChat(){
+    document.getElementById("chat").innerHTML="";
+ }
 </script>
 
 </body>
