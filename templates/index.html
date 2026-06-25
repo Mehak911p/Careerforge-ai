@@ -64,7 +64,26 @@ background:#374151;
 padding:10px;
 margin:10px 0;
 border-radius:10px;
-}   
+}  
+.upload-btn{
+display:inline-block;
+padding:12px 18px;
+background:#10b981;
+color:white;
+border-radius:12px;
+cursor:pointer;
+margin-bottom:10px;
+font-weight:bold;
+}
+
+.upload-btn:hover{
+background:#059669;
+}
+
+#preview{
+max-width:100%;
+border:2px solid #374151;
+}
 </style>
 </head>
 
@@ -91,7 +110,14 @@ border-radius:10px;
 
 </div>
 
-<input type="file" id="imageUpload">
+<label for="imageUpload" class="upload-btn">📷 Upload Image</label>
+<input type="file" id="imageUpload" accept="image/*" hidden>
+
+<div id="previewContainer" style="display:none; margin-top:15px;">
+    <img id="preview" width="220" style="border-radius:12px;">
+    <br><br>
+    <button onclick="removeImage()">❌ Remove Image</button>
+</div>
 <br><br>
 <input id="msg" placeholder="Ask anything">
 <button onclick="send()">Send</button>
@@ -133,6 +159,33 @@ document.getElementById("msg").addEventListener("keydown", function(event) {
         send();
     }
 });
+ document.getElementById("imageUpload").addEventListener("change", function(e){
+
+const file = e.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(event){
+
+document.getElementById("preview").src = event.target.result;
+
+document.getElementById("previewContainer").style.display = "block";
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+function removeImage(){
+
+document.getElementById("imageUpload").value="";
+
+document.getElementById("previewContainer").style.display="none";
+
+}
 function clearChat(){
     document.getElementById("chat").innerHTML="";
  }
