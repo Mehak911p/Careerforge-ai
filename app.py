@@ -16,7 +16,8 @@ def home():
 @app.route("/chat", methods=["POST"])
 def chat():
     try:
-        user_message = request.json.get("message", "")
+       user_message = request.form.get("message", "")
+image = request.files.get("image") 
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
