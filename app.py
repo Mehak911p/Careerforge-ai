@@ -17,7 +17,7 @@ def home():
 def chat():
     try:
        user_message = request.form.get("message", "")
-image = request.files.get("image") 
+    image = request.files.get("image") 
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
