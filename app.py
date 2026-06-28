@@ -22,6 +22,7 @@ def chat():
        response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
+                ...
                 {
                     "role": "system",
                     "content": "You are CareerForge AI, a smart career assistant helping people with jobs, CVs, interview tips, career advice, software development learning, and skill development."
