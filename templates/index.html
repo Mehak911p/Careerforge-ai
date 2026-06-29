@@ -16,8 +16,8 @@ margin:0;
 }
 
 .box{
-width:80%;
-max-width:600px;
+width:95%;
+max-width:900px;
 background:#1f2937;
 padding:20px;
 border-radius:15px;
@@ -84,6 +84,29 @@ background:#059669;
 max-width:100%;
 border:2px solid #374151;
 }
+ .chat-input{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:15px;
+}
+
+.chat-input input{
+flex:1;
+padding:14px;
+border-radius:25px;
+background:#374151;
+color:white;
+font-size:16px;
+}
+
+.chat-input button{
+width:50px;
+height:50px;
+border-radius:50%;
+font-size:20px;
+font-weight:bold;
+}
 </style>
 </head>
 
@@ -119,9 +142,11 @@ border:2px solid #374151;
     <button onclick="removeImage()">❌ Remove Image</button>
 </div>
 <br><br>
-<input id="msg" placeholder="Ask anything">
-<button onclick="send()">Send</button>
-<button onclick="clearChat()">Clear</button>
+<div class="chat-input">
+
+<input id="msg" placeholder="Message CareerForge AI...">
+
+<button onclick="send()">↑</button>
 
 </div>
 
