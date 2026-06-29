@@ -66,18 +66,23 @@ margin:10px 0;
 border-radius:10px;
 }  
 .upload-btn{
-display:inline-block;
-padding:12px 18px;
-background:#10b981;
+width:45px;
+height:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#374151;
 color:white;
-border-radius:12px;
+border-radius:50%;
 cursor:pointer;
-margin-bottom:10px;
+font-size:24px;
 font-weight:bold;
+margin:0;
+padding:0;
 }
 
 .upload-btn:hover{
-background:#059669;
+background:#4b5563;
 }
 
 #preview{
@@ -133,7 +138,7 @@ font-weight:bold;
 
 </div>
 
-<label for="imageUpload" class="upload-btn">📷 Upload Image</label>
+<label for="imageUpload" class="upload-btn">📎</label>
 <input type="file" id="imageUpload" accept="image/*" hidden>
 
 <div id="previewContainer" style="display:none; margin-top:15px;">
