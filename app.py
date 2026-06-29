@@ -16,13 +16,12 @@ def home():
 @app.route("/chat", methods=["POST"])
 def chat():
     try:
-       user_message = request.form.get("message", "")
-       image = request.files.get("image") 
+        user_message = request.form.get("message", "")
+        image = request.files.get("image")
 
-       response = client.chat.completions.create(
+        response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                ...
                 {
                     "role": "system",
                     "content": "You are CareerForge AI, a smart career assistant helping people with jobs, CVs, interview tips, career advice, software development learning, and skill development."
