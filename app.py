@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from openai import OpenAI
 import os
-
+import base64
+import mimetypes
 app = Flask(__name__)
 
 client = OpenAI(
