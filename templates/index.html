@@ -160,7 +160,7 @@ font-weight:bold;
 async function send(){
 
 let msg=document.getElementById("msg").value;
-
+if(msg.trim()=="") return;
 document.getElementById("chat").innerHTML +=
 "<div class='user-message'><b>You:</b><br>"+msg+"</div>";
 
